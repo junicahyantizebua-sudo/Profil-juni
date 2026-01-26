@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeri Foto | Juni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #0b1d3a, #09162e);
+      color: #fff;
+      margin: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-menu li a:hover {
+      text-decoration: underline;
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: #020617;
+      border-radius: 10px;
+      padding: 10px 0;
+      display: none;
+      min-width: 150px;
+    }
+
+    .dropdown-menu li {
+      list-style: none;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 8px 15px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .dropdown-menu li a:hover {
+      background: #1e293b;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* GALERI */
+    .section-padding {
+      padding: 90px 0;
+    }
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+    
+
+    /* FOOTER */
+    footer {
+      background: #020617;
+      padding: 30px 0;
+      text-align: center;
+      color: #cbd5e1;
+    }
+    .menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* MODE HP */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    background: #020617;
+    flex-direction: column;
+    width: 200px;
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu li {
+    margin: 8px 0;
+  }
+}
+/* SUBMENU MOBILE FIX */
+.navbar-nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* submenu di mode mobile */
+@media (max-width: 991px) {
+  .galeri-submenu {
+    position: static;      /* jangan absolute */
+    background: transparent;
+    padding-left: 15px;
+    box-shadow: none;
+  }
+
+  .galeri-submenu li a {
+    color: #e5e7eb;
+    font-size: 15px;
+    padding: 6px 0;
+  }
+}
+.galeri-submenu {
+  display: none;
+}
+
+.galeri-submenu.show {
+  display: block;
+}
+/* =========================
+   LIGHT MODE (WARNA BARU)
+========================= */
+body.light-mode {
+  background: linear-gradient(180deg, #f8fafc, #e0f2fe);
+  color: #0f172a;
+}
+
+/* Navbar */
+body.light-mode .navbar {
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+}
+
+body.light-mode .logo,
+body.light-mode .nav-link,
+body.light-mode .navbar-brand {
+  color: #ffffff !important;
+}
+
+/* Dropdown */
+body.light-mode .dropdown-menu,
+body.light-mode .nav-menu {
+  background: #ffffff;
+}
+
+body.light-mode .dropdown-menu li a,
+body.light-mode .galeri-submenu li a {
+  color: #0f172a;
+}
+
+body.light-mode .dropdown-menu li a:hover {
+  background: #e0f2fe;
+}
+
+/* Gallery Card */
+body.light-mode .gallery-card {
+  background: #ffffff;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Text */
+body.light-mode .gallery-title p {
+  color: #334155;
+}
+
+/* Footer */
+body.light-mode footer {
+  background: #e0f2fe;
+  color: #0f172a;
+}
+.gallery-card div {
+  background: rgba(2, 6, 23, 0.85);
+}
+
+body.light-mode .gallery-card div {
+  background: #f8fafc;
+  color: #0f172a;
+}
+.gallery-info {
+  padding: 14px;
+  background: rgba(2, 6, 23, 0.85);
+}
+
+.gallery-info h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.gallery-info p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* Light mode */
+body.light-mode .gallery-info {
+  background: #f8fafc;
+  color: #0f172a;
+}
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">JUNI WEB</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu"><ul class="navbar-nav ms-auto align-items-center">
+
+  <li class="nav-item">
+    <a class="nav-link" href="index.html#home">Home</a>
+  </li>
+
+  <li class="nav-item">
+    <a href="#" class="nav-link" id="tentangToggle">Tentang ▾</a>
+    <ul class="galeri-submenu" id="tentangMenu">
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="pendidikan.html">Pendidikan</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-item">
+    <a href="#" class="nav-link" id="galeriToggle">Galeri ▾</a>
+    <ul class="galeri-submenu" id="galeriMenu">
+      <li><a href="galeri-foto.html">Foto</a></li>
+      <li><a href="galeri-video.html">Video</a></li>
+      <li><a href="galeri-kegiatan.html">Kegiatan</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="kontak.html">Kontak</a>
+  </li>
+
+  <li class="nav-item ms-3">
+    <button id="darkToggle" class="btn btn-outline-light">🌙</button>
+  </li>
+
+</ul>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+<!-- GALERI FOTO --><section class="section-padding">
+  <div class="container">
+
+    <!-- JUDUL -->
+    <div class="gallery-title mb-5">
+      <h1 class="fw-bold">📸 Galeri Foto</h1>
+      <p class="opacity-75">
+        Dokumentasi kegiatan, pembelajaran, dan momen penting
+      </p>
+    </div>
+
+    <!-- GALERI PKL -->
+    <h3 class="fw-bold mb-4">🏢 Kegiatan PKL</h3>
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-4">
+        <div class="gallery-card">
+          <img src="img/pkl1.jpg" alt="PKL">
+          <div class="gallery-info">
+            <h6>Kegiatan PKL</h6>
+            <p>Praktik kerja lapangan sesuai jurusan TKJ</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="gallery-card">
+          <img src="img/pkl2.jpg" alt="PKL">
+          <div class="gallery-info">
+            <h6>Belajar di Industri</h6>
+            <p>Penerapan ilmu jaringan dan komputer</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GALERI SEKOLAH -->
+    <h3 class="fw-bold mb-4">🏫 Kegiatan Sekolah</h3>
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-4">
+        <div class="gallery-card">
+          <img src="img/foto.jpg" alt="Sekolah">
+          <div class="gallery-info">
+            <h6>Aktivitas Sekolah</h6>
+            <p>Kegiatan belajar dan event sekolah</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="gallery-card">
+          <img src="img/foto1.jpg" alt="Sekolah">
+          <div class="gallery-info">
+            <h6>Kegiatan Kelas</h6>
+            <p>Pembelajaran dan diskusi bersama</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GALERI PERSONAL -->
+    <h3 class="fw-bold mb-4">📸 Dokumentasi Pribadi</h3>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="gallery-card">
+          <img src="img/girls1.jpg" alt="Personal">
+          <div class="gallery-info">
+            <h6>Momen Pribadi</h6>
+            <p>Dokumentasi kegiatan sehari-hari</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="gallery-card">
+          <img src="img/girls2.jpg" alt="Personal">
+          <div class="gallery-info">
+            <h6>Waktu Luang</h6>
+            <p>Mengabadikan momen santai</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Juni Web. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+  }
+</script>
+<script>
+const galeriToggle = document.getElementById("galeriToggle");
+const galeriMenu = document.getElementById("galeriMenu");
+
+if (galeriToggle && galeriMenu) {
+  galeriToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    galeriMenu.classList.toggle("show");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!galeriToggle.contains(e.target) && !galeriMenu.contains(e.target)) {
+      galeriMenu.classList.remove("show");
+    }
+  });
+}
+</script>
+
+<script>
+const tentangToggle = document.getElementById("tentangToggle");
+const tentangMenu = document.getElementById("tentangMenu");
+
+if (tentangToggle && tentangMenu) {
+  tentangToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    tentangMenu.classList.toggle("show");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!tentangToggle.contains(e.target) && !tentangMenu.contains(e.target)) {
+      tentangMenu.classList.remove("show");
+    }
+  });
+}
+</script>
+<script>
+const darkToggle = document.getElementById("darkToggle");
+
+// cek tema terakhir
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light-mode");
+  darkToggle.textContent = "🌞";
+}
+
+darkToggle.addEventListener("click", function () {
+  document.body.classList.toggle("light-mode");
+
+  if (document.body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
+    darkToggle.textContent = "🌞";
+  } else {
+    localStorage.setItem("theme", "dark");
+    darkToggle.textContent = "🌙";
+  }
+});
+</script><script>
+const galeriToggle = document.getElementById("galeriToggle");
+const galeriMenu = document.getElementById("galeriMenu");
+const tentangToggle = document.getElementById("tentangToggle");
+const tentangMenu = document.getElementById("tentangMenu");
+
+// GALERI
+galeriToggle.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  galeriMenu.classList.toggle("show");
+  tentangMenu.classList.remove("show");
+});
+
+// TENTANG
+tentangToggle.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  tentangMenu.classList.toggle("show");
+  galeriMenu.classList.remove("show");
+});
+
+// KLIK LUAR → TUTUP
+document.addEventListener("click", function () {
+  galeriMenu.classList.remove("show");
+  tentangMenu.classList.remove("show");
+});
+</script>
+</body>
+</html>
